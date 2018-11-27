@@ -11,8 +11,8 @@ class Todo {
         return db
             .one(
                 `insert into todos (name, completed)
-            values ($1, $2)
-            returning id`,
+                    values ($1, $2)
+                        returning id`,
                 [name, completed]
             )
             .then(todo => {
@@ -53,8 +53,8 @@ class Todo {
         this.userId = userId;
         return db.result(
             `update todos
-        set user_id=$2
-          where id=$1`,
+                set user_id=$2
+                    where id=$1`,
             [this.id, userId]
         );
     }
@@ -63,8 +63,8 @@ class Todo {
         this.name = name;
         return db.result(
             `update todos
-        set name=$2
-          where id=$1`,
+                set name=$2
+                    where id=$1`,
             [this.id, name]
         );
     }
@@ -73,8 +73,8 @@ class Todo {
         this.didComplete = didComplete;
         return db.result(
             `update todos 
-        set completed=$2 
-          where id=$1`,
+                set completed=$2 
+                    where id=$1`,
             [this.id, didComplete]
         );
     }
@@ -82,8 +82,8 @@ class Todo {
     markCompleted() {
         return db.result(
             `update todos 
-	      set completed=$2 
-	        where id=$1`,
+	            set completed=$2 
+	                where id=$1`,
             [this.id, true]
         );
     }
@@ -91,8 +91,8 @@ class Todo {
     markPending() {
         return db.result(
             `update todos 
-	      set completed=$2 
-	        where id=$1`,
+	            set completed=$2 
+	                where id=$1`,
             [this.id, false]
         );
     }
@@ -101,7 +101,7 @@ class Todo {
     static deleteById(id) {
         return db.result(
             `delete from todos 
-        where id = $1`,
+                where id = $1`,
             [id]
         );
     }

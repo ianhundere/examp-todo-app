@@ -34,7 +34,7 @@ class User {
                 [name, username, hash]
             )
             .then(data => {
-                const u = new User(data.id, username);
+                const u = new User(data.id, name, username);
                 return u;
             });
     }
