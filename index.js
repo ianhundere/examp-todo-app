@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Configure body-parser to read JSON bodies
 app.use(bodyParser.json());
 
-// const Todo = require('./models/Todo');
+const Todo = require('./models/Todo');
 const User = require('./models/User');
 // const bcrypt = require('bcrypt');
 
@@ -144,7 +144,7 @@ For each page:
 3. create and use view functions (passing them data 
 from db if needed).
 */
-app.get('/dashboard'.protectRoute, (req, res) => {
+app.get('/dashboard', protectRoute, (req, res) => {
     const theUser = req.session.user;
     theUser.getTodos().then(allTodos => {
         res.send(page(todoList(allTodos)));
@@ -276,7 +276,7 @@ app.post('/users/:id([0-9]+)/edit', (req, res) => {
 
 // ========================================================
 
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log('express app is ready.');
 });
 
@@ -298,11 +298,11 @@ app.listen(3000, () => {
 //   });
 // });
 
-// app.get("/todos/", (req, res) => {
-//   Todo.getAll().then(allTodos => {
-//     res.send(allTodos);
-//   });
-// });
+app.get("/todos/", (req, res) => {
+    Todo.getAll().then(allTodos => {
+        res.send(allTodos);
+    });
+});
 
 // app.get("/todos/:id(\\d+)", (req, res) => {
 //   Todo.getById(req.params.id)
