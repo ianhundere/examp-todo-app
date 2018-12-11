@@ -1,6 +1,6 @@
+# helpful notes in creating a database
 
-
-# Adding Users
+## Adding Users
 
 ## Start with the Database
 
